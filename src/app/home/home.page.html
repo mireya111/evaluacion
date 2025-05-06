@@ -1,20 +1,58 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Registro de Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <form (ngSubmit)="register()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre" name="nombre" required></ion-input>
+    </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input [(ngModel)]="apellido" name="apellido" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input [(ngModel)]="direccion" name="direccion" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Edad</ion-label>
+      <ion-input type="number" [(ngModel)]="edad" name="edad" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+    </ion-item>
+
+    <!-- Datepicker -->
+    <ion-item>
+      <ion-label position="floating">Fecha de nacimiento</ion-label>
+      <ion-datetime [(ngModel)]="fechaNacimiento" name="fechaNacimiento" required></ion-datetime>
+    </ion-item>
+
+    <!-- Campo de selección múltiple -->
+    <ion-item>
+      <ion-label>Selecciona tus hobbies</ion-label>
+      <ion-select [(ngModel)]="hobbies" name="hobbies" multiple="true" placeholder="Selecciona tus hobbies">
+        <ion-select-option value="deportes">Deportes</ion-select-option>
+        <ion-select-option value="musica">Música</ion-select-option>
+        <ion-select-option value="lectura">Lectura</ion-select-option>
+        <ion-select-option value="viajes">Viajes</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" type="submit">Registrar</ion-button>
+  </form>
 </ion-content>
