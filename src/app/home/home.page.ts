@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { Auth } from '@angular/fire/auth';
 import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 import { createUserWithEmailAndPassword } from '@angular/fire/auth';
-
 
 @Component({
   selector: 'app-home',
@@ -14,8 +12,8 @@ import { createUserWithEmailAndPassword } from '@angular/fire/auth';
   imports: [IonicModule, CommonModule, FormsModule],
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
+  providers: [Auth, Firestore], // Asegúrate de agregar los proveedores aquí si no usas 'providedIn: root'
 })
-
 export class HomePage {
   nombre: string = '';
   apellido: string = '';
@@ -61,3 +59,4 @@ export class HomePage {
     }
   }
 }
+
