@@ -6,7 +6,9 @@ import { IonicModule } from '@ionic/angular';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 if (environment.production) {
   enableProdMode();
@@ -15,10 +17,11 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
-      IonicModule.forRoot(),
-      FormsModule,
-      ReactiveFormsModule
+      IonicModule.forRoot({})
     ),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), // Mover fuera de importProvidersFrom
+    provideAuth(() => getAuth()), // Mover fuera de importProvidersFrom
+    provideFirestore(() => getFirestore()), // Mover fuera de importProvidersFrom
     provideRouter(routes),
   ],
 });
